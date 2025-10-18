@@ -1,0 +1,35 @@
+/* Main CSS file */
+
+:root {
+  --body-font-family: 'Plus Jakarta Sans Variable', sans-serif;
+  --body-font-size: 1rem;
+  --colour-primary: #212529;
+  --colour-primary-inverse: #fff;
+}
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  line-height: 150%;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero {
+    padding: 100px 0;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.card-title a {
+    text-decoration: none;
+}
+

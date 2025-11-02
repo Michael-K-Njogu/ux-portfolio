@@ -10,7 +10,6 @@ import { Stars } from 'react-bootstrap-icons'
 const CaseStudies = () => {
   const [caseStudies, setCaseStudies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [filter, setFilter] = useState("featured"); // default filter
 
   // Filter the case studies
@@ -34,12 +33,9 @@ const CaseStudies = () => {
 
         if (response && response.items) {
           setCaseStudies(response.items);
-        } else {
-          setError('No case studies found.');
         }
       } catch (err) {
         console.error('Error fetching case studies:', err);
-        setError('Failed to load case studies.');
       } finally {
         setLoading(false);
       }

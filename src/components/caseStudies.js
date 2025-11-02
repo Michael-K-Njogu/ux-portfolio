@@ -1,80 +1,153 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
-import client from '../contentfulClient';
-import HeroSection from './layout/Hero';
+import { useEffect, useState } from 'react'
+import { Container } from 'react-bootstrap'
+import { Link } from "react-router-dom"
+import { motion } from "framer-motion"
+import Hero from './ui/Hero'
+import { selectClient } from '../contentfulClient'
+import { ContentfulLivePreview } from '@contentful/live-preview';
+import { Stars } from 'react-bootstrap-icons'
 
 const CaseStudies = () => {
   const [caseStudies, setCaseStudies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [filter, setFilter] = useState("featured"); // default filter
+
+  // Filter the case studies
+  const filteredStudies = caseStudies.filter((item) => {
+    const isFeatured = item.fields.isFeatured; // assuming this is a boolean field in Contentful
+    return filter === "featured" ? isFeatured : !isFeatured;
+  });  
+
+  // Determine if preview mode is enabled
+  const usePreview = window.location.search.includes('preview=true');
 
   useEffect(() => {
-    const fetchCaseStudies = async () => {
+    
+    const client = selectClient(usePreview);
+    const fetchEntries = async () => {
       try {
-        const res = await client.getEntries({ content_type: "caseStudy" });
-        setCaseStudies(res.items);
+        const response = await client.getEntries({
+          content_type: 'caseStudy', // your content type ID in Contentful
+          order: 'fields.order', // order by 'order' field,
+        });
+
+        if (response && response.items) {
+          setCaseStudies(response.items);
+        } else {
+          setError('No case studies found.');
+        }
       } catch (err) {
-        console.error("Error fetching case studies:", err);
+        console.error('Error fetching case studies:', err);
+        setError('Failed to load case studies.');
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCaseStudies();
-  }, []);
-
-
-  if (loading) {
-    return (
-      <div className="text-center py-5">
-        <Spinner animation="border" variant="primary" />
-      </div>
-    );
-  }  
+    fetchEntries();
+  }, [usePreview]);
 
   return (
-    <div>
-    <HeroSection />
-    <Container className="py-5">
-      <h2 className="mb-5 text-center">Featured Work</h2>
-      <Row>
-        {caseStudies.map((item) => {
-          const { title, subtitle, featuredImage, slug, skills } = item.fields;
+    <div className="wrapper">
+      <Hero />
+
+      <section className="content-section pt-0" id="my-work">
+        <Container>
+      <div className="project-filters d-flex">
+        <button
+          onClick={() => setFilter("featured")}
+          className={`btn btn-rounded ${
+            filter === "featured"
+              ? "filter-active"
+              : "filter-inactive"
+          }`}
+        >
+          <span className="bootstrap-icon me-1"><Stars size={24} /></span>
+          Featured Case Studies
+        </button>
+
+        <button
+          onClick={() => setFilter("other")}
+          className={`btn btn-rounded ${
+            filter === "other"
+              ? "filter-active"
+              : "filter-inactive"
+          }`}
+        >
+          Other Case Studies
+        </button>
+      </div>
+      <h2 className="section-title mb-3">{filter === "featured" ? "Featured Case Studies" : "Other Case Studies"}</h2>
+      <p className="mb-4 mb-md-5">
+        A selection of my recent work showcasing user-centered design solutions.
+      </p>
+
+          {loading && <p>Loading projects...</p>}
+          {!loading && caseStudies.length === 0 && <p>No projects found.</p>}
+
+        {filteredStudies.map((item) => {
+          const { id, title, subtitle, featuredImage, slug, skills } = item.fields;
+
+          const titleProps = ContentfulLivePreview.getProps({
+            entryId: item.sys.id,
+            fieldId: 'title',
+          });          
+
+          const subtitleProps = ContentfulLivePreview.getProps({
+            entryId: item.sys.id,
+            fieldId: 'subtitle',
+          });          
 
           return (
-            <Col md={6} className="mb-4" key={item.sys.id}>
-              <Card className="shadow-sm h-100 border-0">
-                {featuredImage && (
-                  <Link to={`/case-study/${slug}`}>
-                  <Card.Img
-                    variant="top"
-                    src={featuredImage.fields.file.url}
-                    alt={featuredImage.fields.title}
-                    className="object-fit-cover"
-                  />
-                  </Link>
-                )}
-                <Card.Body>
-                  <Card.Title><Link to={`/case-study/${slug}`}>{title}</Link></Card.Title>
-                  <Card.Text>{subtitle}</Card.Text>
-                  {skills && (
-                    <div className="mt-3">
-                      {skills.map((skill, index) => ( 
-                        <span key={index} className="badge bg-secondary me-2">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </Card.Body>
-              </Card>
-            </Col>
-          );
-        })}
-      </Row>
-    </Container>
-    </div>
-  );
-};
+              <div
+                key={id}
+                className="project-item align-items-center mb-5 d-flex flex-column flex-md-row"
+              >
+                {/* Project Image */}
+                <div className="project-item-img me-md-4 mb-md-0">
+                  <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+                    viewport={{ once: true }}
+                  >
+                      <Link to={`/case-studies/${slug}`}>
+                        <img
+                          loading="lazy"
+                          src={featuredImage?.fields?.file?.url}
+                          alt={featuredImage?.fields?.title || 'Project thumbnail'}
+                          className="img-fluid shadow-sm"
+                        />
+                      </Link>
+                  </motion.div>
+                </div>
 
-export default CaseStudies;
+                {/* Project Info */}
+                <div className="project-item-info">
+                  <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1], delay: 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                      <h3 {...titleProps}><Link to={`/case-studies/${slug}`}>{title}</Link></h3>
+                    <p {...subtitleProps}>{subtitle}</p>
+
+                    <ul className="categories">
+                      {skills.map((skill, i) => (
+                        <li key={i}><span>{skill}</span></li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </div>
+              </div>
+            )})
+          }
+        </Container>
+      </section>
+    </div>
+  )
+}
+
+export default CaseStudies

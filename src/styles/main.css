@@ -406,7 +406,7 @@ blockquote p, blockquote p b {
     }
 
     .content-section h2 {
-        font-size: 1.5rem !important;
+        font-size: 2rem !important;
     }
 
     .project-filters {
@@ -845,7 +845,7 @@ figcaption {
 
 .learning-card-img img {
     height: 60px;
-    max-width: 100%;
+    max-width: 60px;
 }
 
 .theme-dark img.inverted {
@@ -860,6 +860,47 @@ figcaption {
     vertical-align: initial;
     height: auto;
     width: auto;
+}
+
+@media (max-width: 1023.98px) {
+
+    .skills-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .skill-list ul {
+        gap: 10px;
+    }
+
+    .tool-list ul {
+        column-count: 1;
+    }
+
+    .tool-list ul li {
+        margin-bottom: 12px;
+    }
+
+    .timeline-row, .timeline-row.flex-row-reverse {
+        flex-direction: column !important;
+        margin-bottom: 12px;
+    }
+
+    .timeline-divider, .timeline-icon {
+        display: none;
+    }
+
+    .timeline-item {
+        width: 100%;
+    }
+
+    .learning-cards {
+        column-count: 1;
+    }
+
+    .learning-card {
+        margin-bottom: 12px;
+    }
+
 }
 
 /* Footer styles */

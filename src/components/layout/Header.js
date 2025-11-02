@@ -46,19 +46,18 @@ const Header = () => {
 
   // Initialize theme based on saved preference
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
+    const savedTheme = localStorage.getItem('theme');
+    const isDark = savedTheme === 'dark'; // only dark if explicitly saved
 
-    // ✅ Default to light mode if nothing is saved
-    const isDark = savedTheme === 'dark'
+    setIsDarkMode(isDark);
+    document.body.classList.toggle('theme-dark', isDark);
 
-    setIsDarkMode(isDark)
-    document.body.classList.toggle('theme-dark', isDark)
-
-    // ✅ If no theme is saved, explicitly set it to light mode
+    // If no preference saved, force light mode
     if (!savedTheme) {
-      localStorage.setItem('theme', 'light')
+      localStorage.setItem('theme', 'light');
+      document.body.classList.remove('theme-dark');
     }
-  }, [])
+  }, []);
 
   // Toggle theme and save preference
   const toggleTheme = () => {

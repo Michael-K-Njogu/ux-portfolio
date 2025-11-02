@@ -43,14 +43,15 @@ const CaseStudies = () => {
 
     fetchEntries();
   }, [usePreview]);
-
+  
   return (
     <div className="wrapper">
       <Hero />
 
       <section className="content-section pt-0" id="my-work">
         <Container>
-      <div className="project-filters d-flex">
+          {/*
+        <div className="project-filters d-flex">
         <button
           onClick={() => setFilter("featured")}
           className={`btn btn-rounded ${
@@ -75,6 +76,8 @@ const CaseStudies = () => {
         </button>
       </div>
       <h2 className="section-title mb-3">{filter === "featured" ? "Featured Case Studies" : "Other Case Studies"}</h2>
+      */}
+      <h2 className="section-title mb-3">My Work.</h2>
       <p className="mb-4 mb-md-5">
         A selection of my recent work showcasing user-centered design solutions.
       </p>

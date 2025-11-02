@@ -99,7 +99,7 @@ const learningCards = [
                   Strategic Product Designer crafting thoughtful experiences from complex beginnings.
                 </p>
 
-                <div className="d-flex flex-wrap">
+                <div className="hero-buttons">
                   <Button
                     variant="primary"
                     as={Link}

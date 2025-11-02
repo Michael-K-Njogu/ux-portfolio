@@ -1,16 +1,32 @@
-import { Container } from "react-bootstrap";
+import { Row, Col, Container } from 'react-bootstrap'
+import { Linkedin, EnvelopeAt, ArrowUp, CupHot, Github } from 'react-bootstrap-icons'
+import BackToTop from 'react-back-to-top-button'
 
-function Footer() {
-  return (
-    <footer className="bg-light py-4 mt-auto text-center border-top">
-      <Container>
-        <p className="mb-1">© {new Date().getFullYear()} Michael K. Njogu. All rights reserved.</p>
-        <p className="small text-muted mb-0">
-          Built with ❤️ using React, React Bootstrap &amp; Contentful
-        </p>
-      </Container>
-    </footer>
-  );
+let currentYear = new Date().getFullYear()
+
+const Footer = () => {
+        return (
+            <footer>
+                <Container>
+                    <Row>
+                        <Col md={6}>
+                            <p>&copy; {currentYear} Michael Njogu. Created with <a href="https://www.figma.com/make/" rel="nofollow noreferrer" target="_blank">Figma Make</a>, <a href="https://www.contentful.com/" rel="nofollow noreferrer" target="_blank">Contentful</a> &amp; <a href="https://reactjs.org/" rel="nofollow noreferrer" target="_blank">React</a>.</p>
+                        </Col>
+                        <Col md={6}>
+                            <ul className="social-icons">
+                                <li><a href="https://www.linkedin.com/in/michael-njogu/" rel="nofollow noreferrer" target="_blank" title="Connect with me on LinkedIn"><Linkedin size={24} /></a></li>
+                                <li><a href="mailto:mykekunyo@gmail.com" rel="nofollow noreferrer" title="Send me an email"><EnvelopeAt size={24} /></a></li>
+                                <li><a href="#" rel="nofollow noreferrer" title="Buy me a coffee!"><CupHot size={24} /></a></li>
+                                <li><a href="https://github.com/mykekunyo" rel="nofollow noreferrer" title="View my GitHub profile"><Github size={24} /></a></li>
+                            </ul>
+                        </Col>
+                    </Row>
+                </Container>
+                <BackToTop showOnScrollUp showAt={100} speed={1500} easing="easeInOutQuint">
+                    <span title="Scroll to top"><ArrowUp size={24} /></span>
+                </BackToTop>
+            </footer>
+        )
 }
 
-export default Footer;
+export default Footer

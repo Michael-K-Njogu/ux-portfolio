@@ -1,25 +1,23 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import About from './pages/About'
+import NotFound from './pages/NotFound'
 import CaseStudies from './components/CaseStudies';
 import CaseStudyDetail from './components/CaseStudyDetail';
 
-function App() {
+const App = () => {
   return (
-    <Router>
-      <div className="d-flex flex-column min-vh-100">
+    <div>
       <Header />
-
-      <main>
       <Routes>
-        <Route path="/" element={<CaseStudies />} />
-        <Route path="/case-study/:slug" element={<CaseStudyDetail />} />
+        <Route index element={<CaseStudies />} />
+        <Route path="case-studies/:slug" element={<CaseStudyDetail />} />
+        <Route path="about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      </main>
-
       <Footer />
-      </div>
-    </Router>
+    </div>
   );
 }
 

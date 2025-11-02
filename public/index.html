@@ -22,6 +22,16 @@
     <link rel="mask-icon" href="%PUBLIC_URL%/images/icons/safari-pinned-tab.svg" color="#333333">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
+    <!-- Initialize theme based on saved preference -->
+    <script>
+      (() => {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+          document.body.classList.add('theme-dark');
+        }
+      })();
+    </script>    
+
   </head>
 
   <body class="theme-light">

@@ -1,6 +1,5 @@
 import { Row, Col, Container } from 'react-bootstrap'
 import { Linkedin, EnvelopeAt, ArrowUp, CupHot, Github } from 'react-bootstrap-icons'
-import BackToTop from 'react-back-to-top-button'
 
 let currentYear = new Date().getFullYear()
 
@@ -22,9 +21,6 @@ const Footer = () => {
                         </Col>
                     </Row>
                 </Container>
-                <BackToTop showOnScrollUp showAt={100} speed={1500} easing="easeInOutQuint">
-                    <span title="Scroll to top"><ArrowUp size={24} /></span>
-                </BackToTop>
             </footer>
         )
 }

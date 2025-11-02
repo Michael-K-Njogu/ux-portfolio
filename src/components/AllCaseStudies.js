@@ -79,7 +79,7 @@ const CaseStudies = () => {
       */}
       <h2 className="section-title mb-3">My Work.</h2>
       <p className="mb-4 mb-md-5">
-        A selection of my recent work showcasing user-centered design solutions.
+        A selection of projects showcasing my approach to strategic product design, user experience, and problem-solving across various contexts.
       </p>
 
           {loading && <p>Loading projects...</p>}

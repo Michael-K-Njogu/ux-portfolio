@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import Avatar from '../images/michael-njogu.jpg';
-import Resume from '../docs/Michael_Njogu_CV_Updated.pdf';
+import Resume from '../docs/Michael_Njogu_Strategic_Product_Designer.pdf';
 import { BoxArrowUpRight, ArrowUpRight, Download } from 'react-bootstrap-icons';
 import Timeline from '../components/ui/Timeline';
 

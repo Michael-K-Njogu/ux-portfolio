@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import Hero from './ui/Hero'
 import { selectClient } from '../contentfulClient'
 import { ContentfulLivePreview } from '@contentful/live-preview';
-import { Stars } from 'react-bootstrap-icons'
+//import { Stars } from 'react-bootstrap-icons'
 
 const CaseStudies = () => {
   const [caseStudies, setCaseStudies] = useState([]);

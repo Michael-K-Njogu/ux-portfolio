@@ -1,5 +1,5 @@
 import { Row, Col, Container } from 'react-bootstrap'
-import { Linkedin, EnvelopeAt, CupHot, Github } from 'react-bootstrap-icons'
+import { Linkedin, EnvelopeAt, Github } from 'react-bootstrap-icons'
 
 let currentYear = new Date().getFullYear()
 

@@ -82,7 +82,7 @@ const CaseStudyDetail = () => {
     };
 
     resetAnimation();
-  }, [slug]);
+  }, [slug, scrollYProgress]);
 
   useEffect(() => {
 
@@ -473,8 +473,6 @@ if (contentType === "imageGallery") {
                 
     }, // end renderNode
   }); // end options 
-
-  const options = createRenderOptions(entry?.sys?.id, 'allFields');
 
 return (
   <ContentfulLivePreviewProvider locale="en-US" enableInspectorMode enableLiveUpdates>

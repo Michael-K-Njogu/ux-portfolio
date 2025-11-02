@@ -3,7 +3,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import About from './pages/About'
 import NotFound from './pages/NotFound'
-import CaseStudies from './components/CaseStudies';
+import CaseStudies from './components/caseStudies';
 import CaseStudyDetail from './components/CaseStudyDetail';
 
 const App = () => {

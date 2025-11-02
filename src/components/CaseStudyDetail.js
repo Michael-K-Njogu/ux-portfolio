@@ -296,7 +296,7 @@ useEffect(() => {
               {children}
             </ul>
           )
-        },
+        },       
         
         [BLOCKS.LIST_ITEM]: (node, children) => {
         // Unwrap paragraphs inside list items
@@ -306,7 +306,7 @@ useEffect(() => {
           },
           });
           return <li {...ContentfulLivePreview.getProps({ entryId, fieldId })} className="custom-list-item">{unTaggedChildren}</li>;
-        },    
+        },       
 
         // Inline hyperlinks
         [INLINES.HYPERLINK]: (node, children) => (

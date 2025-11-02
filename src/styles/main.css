@@ -146,6 +146,12 @@ blockquote p, blockquote p b {
     font-family: var(--font-secondary);
 }
 
+@media (max-width: 1023.98px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+}
+
 .theme-toggle {
     color: var(--text-primary);
 }

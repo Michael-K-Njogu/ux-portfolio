@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
-import LearningCard from '../components/ui/LearningCard';
 import Avatar from '../images/michael-njogu.jpg';
 import Resume from '../docs/Michael_Njogu_CV_Updated.pdf';
 import { BoxArrowUpRight, ArrowUpRight, Download } from 'react-bootstrap-icons';

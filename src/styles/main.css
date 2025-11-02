@@ -325,9 +325,10 @@ blockquote p, blockquote p b {
     margin-bottom: 32px;
 }
 
-.filter-active {
-    background-color: var(--colour-accent-primary);
+.filter-active, .filter-active:hover, .filter-active:focus {
+    background-color: var(--colour-accent-primary) !important;
     border-color: var(--colour-accent-primary);
+    color: var(--colour-primary-inverse) !important;
 }
 
 .filter-inactive {
@@ -537,7 +538,7 @@ blockquote p, blockquote p b {
 }
 
 .disclaimer {
-    color: var(--text-secondary);
+    color: var(--text-muted);
     font-style: italic;
 }
 

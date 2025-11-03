@@ -18,7 +18,7 @@ const Timeline = () => {
     },
     {
       id: 3,
-      date: "Apr 2015 - Jun 2021",
+      date: "Apr 2016 - Jun 2021",
       title: "UX/UI Designer + Frontend Designer, Brainwave Communications",
       description: "Took a keen interest in design thinking. Considered a career shift after realizing the impact of good design on user experience.",
       type: "professional",

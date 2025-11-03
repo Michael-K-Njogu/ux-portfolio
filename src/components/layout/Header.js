@@ -155,7 +155,7 @@ const Header = () => {
                 <Nav.Item as="li">
                   <Nav.Link
                     as={NavLink}
-                    to="/#my-work"
+                    to="/"
                     className={({ isActive }) =>
                       `transition-colors duration-300 ${
                         isActive

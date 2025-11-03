@@ -11,7 +11,7 @@ const Timeline = () => {
     {
       id: 2,
       date: "Jun 2021 - Nov 2022",
-      title: "UX/UI Designer, Open Institute",
+      title: "Lead UX/UI Designer, Open Institute",
       description: "Was the first UX/UI designer in the organization and helped them transition from IT-driven to user-centred cultures.",
       type: "professional",
       importance: "important"
@@ -20,7 +20,7 @@ const Timeline = () => {
       id: 3,
       date: "Apr 2015 - Jun 2021",
       title: "UX/UI Designer + Frontend Designer, Brainwave Communications",
-      description: "Took a keen interest in design thinking. Maybe it's time for a career shift...",
+      description: "Took a keen interest in design thinking. Considered a career shift after realizing the impact of good design on user experience.",
       type: "professional",
       importance: "critical"
     },
@@ -28,7 +28,7 @@ const Timeline = () => {
       id: 4,
       date: "Aug 2015 - Aug 2016",
       title: "Frontend Web Developer (Consultant)",
-      description: "Tried my hand at freelancing while sharpening my front-end skills.",
+      description: "Developed and maintained websites for various clients, ensuring responsive design and optimal user experience.",
       type: "professional",
       importance: "important"
     },

@@ -11,14 +11,13 @@ export default function NotFound() {
 
     return (
         <div className="wrapper">  
-            <section className="content-section content-404">
+            <section className="hero">
                 <Container>
                     <div className="icon-wrapper mb-4">
                         <ExclamationDiamond size={64} />
                     </div>
-                    <h1 className="page-title">Oops!</h1>
-                    <h2 className="section-title">Something Went Wrong!</h2>
-                    <p>It seems like the page or resource you are looking for does not exist on this site, or may have been permanently deleted.</p>
+                    <h1 className="mb-4">Page Not Found</h1>
+                    <p>It seems like the page or case study you are looking for does not exist on this site, or may have been permanently deleted.</p>
                     <Link className="styled-link styled-link-full" to="/" title="Go back to the homepage">Take me back home</Link>
                 </Container>
             </section>              

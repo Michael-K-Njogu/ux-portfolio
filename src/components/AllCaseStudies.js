@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import Hero from './ui/Hero'
 import { selectClient } from '../contentfulClient'
 import { ContentfulLivePreview } from '@contentful/live-preview';
-//import { Stars } from 'react-bootstrap-icons'
+import { Stars } from 'react-bootstrap-icons'
 
 const CaseStudies = () => {
   const [caseStudies, setCaseStudies] = useState([]);
@@ -72,7 +72,7 @@ const CaseStudies = () => {
               : "filter-inactive"
           }`}
         >
-          Other Case Studies
+          Other Initiatives
         </button>
       </div>
       <h2 className="section-title mb-3">{filter === "featured" ? "Featured Case Studies" : "Other Case Studies"}</h2>

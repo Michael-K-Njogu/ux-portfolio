@@ -75,9 +75,8 @@ const CaseStudies = () => {
           Other Initiatives
         </button>
       </div>
-      <h2 className="section-title mb-3">{filter === "featured" ? "Featured Case Studies" : "Other Case Studies"}</h2>
+      <h2 className="section-title mb-3">{filter === "featured" ? "Featured Case Studies" : "Other Initiatives"}</h2>
 
-      <h2 className="section-title mb-3">My Work.</h2>
       <p className="mb-4 mb-md-5">
         A selection of projects showcasing my approach to strategic product design, user experience, and problem-solving across various contexts.
       </p>

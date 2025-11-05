@@ -108,8 +108,8 @@ const learningCards = [
                     as={Link}
                     to="/"
                     className="d-inline-flex align-items-center mb-2 mb-md-0"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.97 }}
+                   
+                    whiletap={{ scale: 0.97 }}
                   >
                     View My Work
                     <span className="bootstrap-icon ms-1"><ArrowUpRight size={24} /></span>
@@ -119,8 +119,8 @@ const learningCards = [
                     href={Resume}
                     variant="outline-secondary"
                     className="ms-md-3 d-inline-flex align-items-center"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.97 }}
+                    whilehover={{ scale: 1.05 }}
+                    whiletap={{ scale: 0.97 }}
                   >
                     Download My CV
                     <span className="bootstrap-icon ms-1"><Download size={24} /></span>
@@ -253,7 +253,7 @@ const learningCards = [
             {learningCards.map(({ title, source, link, icon, alt, inverted }, i) => (
               <motion.div key={i} variants={fadeInUp}>
                 <div className="learning-card">
-                    <div class="learning-card-img">
+                    <div className="learning-card-img">
                     <img src={icon} alt={alt} className={inverted ? "inverted" : ""} />
                     </div>
                     <div className="learning-card-text">

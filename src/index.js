@@ -1,7 +1,11 @@
 import ReactDOM from 'react-dom/client';
+import React from 'react';
 import App from './App'
-import { BrowserRouter } from "react-router-dom";
-import ScrollToTop from './util/ScrollToTop'
+import About from './pages/About';
+import NotFound from './pages/NotFound';
+import CaseStudies from './components/AllCaseStudies';
+import CaseStudyDetail from './components/CaseStudyDetail';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import '@fontsource-variable/ibm-plex-sans';
 import '@fontsource/libre-caslon-text';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,18 +19,38 @@ ContentfulLivePreview.init({
   debugMode: true, // Optional – logs live preview activity to console
 });
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <BrowserRouter>
-      <ScrollToTop />
-      <ContentfulLivePreviewProvider
-        locale="en-US"
-        enableInspectorMode
-        enableLiveUpdates
-        debugMode
-        targetOrigin="https://app.contentful.com"
-      >      
-        <App />
-      </ContentfulLivePreviewProvider>
-    </BrowserRouter>
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <App />,
+      children: [
+        { index: true, element: <CaseStudies /> },
+        { path: 'case-studies/:slug', element: <CaseStudyDetail /> },
+        { path: 'about', element: <About /> },
+        { path: '*', element: <NotFound /> },
+      ],
+    },
+  ],
+  {
+    future: {
+      v7_startTransition: true,   // ✅ Opt into smoother route transitions
+      v7_relativeSplatPath: true, // ✅ Use relative splat paths for nested routes
+      v7_fetcherPersist: true, // ✅ Enable fetcher persistence for better performance
+    },
+  }
+);
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <ContentfulLivePreviewProvider
+      locale="en-US"
+      enableInspectorMode
+      enableLiveUpdates
+      debugMode
+      targetOrigin="https://app.contentful.com"
+    > 
+      <RouterProvider router={router} />
+    </ContentfulLivePreviewProvider>
+  </React.StrictMode>
 );

@@ -99,7 +99,7 @@ const CaseStudies = () => {
 
           return (
               <div
-                key={id}
+                key={item.sys.id}
                 className="project-item align-items-center mb-5 d-flex flex-column flex-md-row"
               >
                 {/* Project Image */}

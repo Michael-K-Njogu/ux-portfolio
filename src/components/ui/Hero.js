@@ -26,7 +26,7 @@ const Hero = () => {
               transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1], delay: 0.3 }}
               className="hero-text"
             >
-              <h1 className="hero-title">Simplicity isn’t smaller, it’s smarter.</h1>
+              <h1 className="hero-title">I turn complex ideas into practical solutions.</h1>
               <p className="mb-4">
                 Strategic Product Designer crafting thoughtful experiences from complex beginnings.
               </p>

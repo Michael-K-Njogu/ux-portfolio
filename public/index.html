@@ -23,22 +23,34 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <script>
-      // Immediately set theme before React runs
       (function() {
         try {
-          const savedTheme = localStorage.getItem('theme');
-          if (savedTheme === 'dark') {
-            document.body.classList.add('theme-dark');
+          const applyTheme = () => {
+            const savedTheme = localStorage.getItem('theme');
+            const body = document.body;
+
+            if (!body) return; // safeguard
+
+            if (savedTheme === 'dark') {
+              body.classList.add('theme-dark');
+            } else {
+              body.classList.remove('theme-dark');
+              // Default to light mode if no saved preference
+              if (!savedTheme) localStorage.setItem('theme', 'light');
+            }
+          };
+
+          // If DOM already loaded, run immediately
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', applyTheme);
           } else {
-            document.body.classList.remove('theme-dark');
-            // Force save as light mode if nothing exists
-            if (!savedTheme) localStorage.setItem('theme', 'light');
+            applyTheme();
           }
         } catch (e) {
           console.warn('Theme init failed:', e);
         }
       })();
-    </script>   
+    </script>  
 
   </head>
 

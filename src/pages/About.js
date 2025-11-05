@@ -96,7 +96,7 @@ const learningCards = [
               >
                 <h1 className="hero-title">About Me.</h1>
                 <p className="mb-4">
-                  Strategic Product Designer crafting thoughtful experiences from complex beginnings.
+                  I learn by doing. I explore possibilities, experiment with solutions, and adapt as I discover what works.
                 </p>
 
                 <div className="hero-buttons">

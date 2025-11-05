@@ -96,7 +96,7 @@ const learningCards = [
               >
                 <h1 className="hero-title">About Me.</h1>
                 <p className="mb-4">
-                  I learn by doing. I explore possibilities, experiment with solutions, and adapt as I discover what works.
+                  I learn by doing, exploring possibilities, experimenting with solutions, and adapting as I discover what works.
                 </p>
 
                 <div className="hero-buttons">

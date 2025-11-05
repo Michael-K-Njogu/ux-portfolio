@@ -217,8 +217,11 @@ blockquote p, blockquote p b {
 }
 
 .hero-image {
+    object-fit: cover;
+    object-position: center;
     width: 100%;
     border-radius: 50%;
+    transition: transform 0.3s ease;
 }
 
 .divider {
@@ -278,6 +281,33 @@ blockquote p, blockquote p b {
     justify-content: center;
     align-items: center;
     vertical-align: -5px;
+}
+
+.avatar-flip-container {
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.avatar-flip-inner {
+  position: relative;
+  width: 300px; /* adjust as needed */
+  height: 300px;
+  transform-style: preserve-3d;
+}
+
+.avatar-flip-container:hover .hero-image {
+  transform: scale(1.05);
+}
+
+.avatar-front,
+.avatar-back {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 @media (max-width: 1023.98px) {

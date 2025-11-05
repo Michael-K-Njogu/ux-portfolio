@@ -337,7 +337,7 @@ blockquote p, blockquote p b {
         margin-bottom: 10px;
     }
 
-    .hero-image {
+    .avatar-flip-container {
         display: none;
     }
 
@@ -995,6 +995,11 @@ footer p {
 }
 
 @media (max-width: 1023.98px) {
+
+    .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+    }
 
     footer {
         text-align: center;

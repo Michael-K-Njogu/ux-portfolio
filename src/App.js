@@ -5,6 +5,7 @@ import About from './pages/About'
 import NotFound from './pages/NotFound'
 import CaseStudies from './components/AllCaseStudies';
 import CaseStudyDetail from './components/CaseStudyDetail';
+import BackToTop from './components/ui/BackToTop';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <BackToTop />
       <Footer />
     </div>
   );

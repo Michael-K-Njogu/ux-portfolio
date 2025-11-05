@@ -298,15 +298,46 @@ useEffect(() => {
           )
         },       
         
-        [BLOCKS.LIST_ITEM]: (node, children) => {
-        // Unwrap paragraphs inside list items
-          const unTaggedChildren = documentToReactComponents(node, {
-          renderNode: {
-            [BLOCKS.PARAGRAPH]: (_node, children) => children, // Remove <p> tags inside <li>
-          },
-          });
-          return <li {...ContentfulLivePreview.getProps({ entryId, fieldId })} className="custom-list-item">{unTaggedChildren}</li>;
-        },       
+[BLOCKS.LIST_ITEM]: (node, children) => {
+  // Safely render child nodes inside <li>
+  const innerContent = node.content.map((childNode, i) =>
+    documentToReactComponents(childNode, {
+      renderNode: {
+        // Remove <p> inside <li>
+        [BLOCKS.PARAGRAPH]: (_node, children) => (
+          <span key={`p-${i}`}>{children}</span>
+        ),
+
+        // Handle nested unordered lists correctly
+        [BLOCKS.UL_LIST]: (_node, children) => (
+          <ul key={`ul-${i}`} className="nested-list">
+            {children}
+          </ul>
+        ),
+
+        // Handle nested ordered lists correctly
+        [BLOCKS.OL_LIST]: (_node, children) => (
+          <ol key={`ol-${i}`} className="nested-list">
+            {children}
+          </ol>
+        ),
+      },
+    })
+  );
+
+  // Apply live preview props only to the top-level <li>
+  return (
+    <li
+      {...ContentfulLivePreview.getProps({
+        entryId,
+        fieldId,
+      })}
+      className="custom-list-item"
+    >
+      {innerContent}
+    </li>
+  );
+},    
 
         // Inline hyperlinks
         [INLINES.HYPERLINK]: (node, children) => (

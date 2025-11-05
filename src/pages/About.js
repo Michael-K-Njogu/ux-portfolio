@@ -1,13 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import Avatar from '../images/michael-njogu.jpg';
+import AnimeAvatar from '../images/michael-anime.jpg';
 import Resume from '../docs/Michael_Njogu_Strategic_Product_Designer.pdf';
 import { BoxArrowUpRight, ArrowUpRight, Download } from 'react-bootstrap-icons';
 import Timeline from '../components/ui/Timeline';
 
-export default function About() {
+const About = () => {
+
+const [isFlipped, setIsFlipped] = useState(false)
 
 const learningCards = [
  {
@@ -126,18 +129,40 @@ const learningCards = [
               </motion.div>
             </Col>
 
-            <Col md={3}>
-              <motion.img
-                src={Avatar}
-                alt="Michael Njogu"
-                className="hero-image"
-                loading="lazy"
-                initial={{ opacity: 0, scale: 0.9, y: 40, filter: 'blur(10px)' }}
-                animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ duration: 1.1, ease: [0.4, 0, 0.2, 1], delay: 0.3 }}
-                whileHover={{ scale: 1.05 }}
-              />
-            </Col>
+          <Col md={3}>
+            {/* Avatar flip effect container */}
+            <div
+              className="avatar-flip-container"
+              onClick={() => setIsFlipped(!isFlipped)}
+            >
+              <motion.div
+                className="avatar-flip-inner"
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              >
+                <motion.img
+                  src={Avatar}
+                  alt="Michael Njogu"
+                  className="avatar-front hero-image"
+                  loading="lazy"
+                  style={{ backfaceVisibility: "hidden" }}
+                />
+                <motion.img
+                  src={AnimeAvatar}
+                  alt="Anime Michael"
+                  className="avatar-back hero-image"
+                  loading="lazy"
+                  style={{
+                    transform: "rotateY(180deg)",
+                    backfaceVisibility: "hidden",
+                    position: "absolute",
+                    top: 0,
+                    left: 0 
+                  }}
+                />
+              </motion.div>
+            </div>
+          </Col>
           </Row>
         </Container>
       </section>
@@ -255,3 +280,5 @@ const learningCards = [
     </div>
   );
 }
+
+export default About

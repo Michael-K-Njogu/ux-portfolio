@@ -1,10 +1,13 @@
+import { useState } from "react"
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 import { motion } from "motion/react"
 import { ArrowDown, Person } from 'react-bootstrap-icons'
-import Avatar from '../../images/michael-njogu.jpg'   
+import Avatar from '../../images/michael-njogu.jpg'
+import AnimeAvatar from '../../images/michael-anime.jpg'
 
 const Hero = () => {
+  const [isFlipped, setIsFlipped] = useState(false)
 
   // Smooth scroll to #my-work section
   const scrollToWork = (e) => {
@@ -32,40 +35,55 @@ const Hero = () => {
               </p>
 
               <div className="hero-buttons">
-                <Button 
-                    variant="primary" 
-                    onClick={scrollToWork}
-                  >
-                    View My Work
-                    <span className="bootstrap-icon"><ArrowDown size={24} /></span>
+                <Button variant="primary" onClick={scrollToWork}>
+                  View My Work
+                  <span className="bootstrap-icon"><ArrowDown size={24} /></span>
                 </Button>
 
-                <Button 
-                    as={Link} 
-                    to="/about" 
-                    variant="outline-secondary" 
-                >
+                <Button as={Link} to="/about" variant="outline-secondary">
                   More About Me
                   <span className="bootstrap-icon ms-1"><Person size={24} /></span>
-                </Button>                
+                </Button>
               </div>
- 
             </motion.div>
           </Col>
 
           <Col md={3}>
-            <motion.img
-              src={Avatar}
-              alt="Michael Njogu"
-              className="hero-image"
-              loading="lazy"
-              initial={{ opacity: 0, scale: 0.9, y: 40, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1], delay: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-            />
+            {/* Avatar flip effect container */}
+            <div
+              className="avatar-flip-container"
+              onClick={() => setIsFlipped(!isFlipped)}
+            >
+              <motion.div
+                className="avatar-flip-inner"
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              >
+                <motion.img
+                  src={Avatar}
+                  alt="Michael Njogu"
+                  className="avatar-front hero-image"
+                  loading="lazy"
+                  style={{ backfaceVisibility: "hidden" }}
+                />
+                <motion.img
+                  src={AnimeAvatar}
+                  alt="Anime Michael"
+                  className="avatar-back hero-image"
+                  loading="lazy"
+                  style={{
+                    transform: "rotateY(180deg)",
+                    backfaceVisibility: "hidden",
+                    position: "absolute",
+                    top: 0,
+                    left: 0 
+                  }}
+                />
+              </motion.div>
+            </div>
           </Col>
         </Row>
+
         <div className="divider"></div>
       </Container>
     </section>

@@ -5,7 +5,7 @@ class LearningCard extends React.Component {
     render() {
         return (
                 <div className="learning-card">
-                    <div class="learning-card-img">
+                    <div className="learning-card-img">
                     <img src={this.props.icon} alt={this.props.alt} />
                     </div>
                     <div className="learning-card-text">

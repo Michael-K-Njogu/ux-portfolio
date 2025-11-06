@@ -776,6 +776,10 @@ figcaption {
     padding: 20px;
 }
 
+.theme-dark .tool-list ul li {
+    background-color: var(--bg-secondary);
+}
+
 .tool-list ul li h5 {
     margin-bottom: 3px;
 }

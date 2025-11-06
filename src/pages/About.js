@@ -208,6 +208,9 @@ const learningCards = [
                   { name: 'Adobe Firefly', icon: './images/profile/firefly.png', desc: 'Generative AI for images', inverted: false },
                   { name: 'VS Code', icon: './images/profile/vscode.png', desc: 'Code editing & development', inverted: false },
                   { name: 'GitHub', icon: './images/profile/github-mark.svg', desc: 'Version control & collaboration', inverted: true },
+                  { name: 'Contentful', icon: './images/profile/contentful.png', desc: 'Headless CMS content management', inverted: false },
+                  { name: 'Netlify', icon: './images/profile/netlify.png', desc: 'Prototyping & split testing', inverted: false },
+                  { name: 'Notion', icon: './images/profile/notion.png', desc: 'Project documentation', inverted: true }                  
                 ].map((tool, i) => (
                   <motion.li key={i} variants={fadeInUp}>
                     <div className="tool-icon">
@@ -220,8 +223,10 @@ const learningCards = [
                   </motion.li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.div>            
           </motion.div>
+
+          
         </Container>
       </section>
 

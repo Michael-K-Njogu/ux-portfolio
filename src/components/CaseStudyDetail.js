@@ -26,7 +26,7 @@ const CaseStudyDetail = () => {
     if (caseStudy?.fields?.title) {
       document.title = `${caseStudy.fields.title} – Michael Njogu`;
     } else {
-      document.title = "Case Study – Michael Njogu";
+      document.title = "Michael Njogu - Strategic Product Designer";
     }
 
     // Optional cleanup: reset when unmounting

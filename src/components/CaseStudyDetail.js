@@ -395,63 +395,63 @@ useEffect(() => {
           const contentType = entry.sys?.contentType?.sys?.id;
           const fields = entry.fields || {};
 
-// Handle Image Gallery (block)
-if (contentType === "imageGallery") {
-  const { images, showCaptions } = fields; // ✅ include the new boolean field
-
-  return (
-    <section
-      className="mt-10"
-      {...ContentfulLivePreview.getProps({
-        entryId: entry.sys.id,
-        fieldId: "images",
-      })}
-    >
-      <div className="image-grid">
-        {images?.map((asset, i) => {
-          const { file, title, description } = asset.fields;
-          const imageUrl = file?.url?.startsWith("//")
-            ? `https:${file.url}`
-            : file.url;
+        // Handle Image Gallery (block)
+        if (contentType === "imageGallery") {
+          const { images, showCaptions } = fields; // ✅ include the new boolean field
 
           return (
-            <div
-              key={i}
-              className="rounded-xl overflow-hidden shadow-md"
+            <section
+              className="mt-10"
               {...ContentfulLivePreview.getProps({
-                entryId: asset.sys.id,
-                fieldId: "file",
+                entryId: entry.sys.id,
+                fieldId: "images",
               })}
             >
-              <figure className="mb-0 mt-0">
-                <Zoom>
-                  <img
-                    src={imageUrl}
-                    alt={title || `Gallery image ${i + 1}`}
-                    className="gallery-img h-64 object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </Zoom>
+              <div className="image-grid">
+                {images?.map((asset, i) => {
+                  const { file, title, description } = asset.fields;
+                  const imageUrl = file?.url?.startsWith("//")
+                    ? `https:${file.url}`
+                    : file.url;
 
-                {/* ✅ Conditionally render captions */}
-                {showCaptions && (title || description) && (
-                  <figcaption
-                    className="text-sm text-gray-500 mt-2 text-center"
-                    {...ContentfulLivePreview.getProps({
-                      entryId: asset.sys.id,
-                      fieldId: description ? "description" : "title",
-                    })}
-                  >
-                    {description || title}
-                  </figcaption>
-                )}
-              </figure>
-            </div>
+                  return (
+                    <div
+                      key={i}
+                      className="rounded-xl overflow-hidden shadow-md"
+                      {...ContentfulLivePreview.getProps({
+                        entryId: asset.sys.id,
+                        fieldId: "file",
+                      })}
+                    >
+                      <figure className="mb-0 mt-0">
+                        <Zoom>
+                          <img
+                            src={imageUrl}
+                            alt={title || `Gallery image ${i + 1}`}
+                            className="gallery-img h-64 object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                        </Zoom>
+
+                        {/* ✅ Conditionally render captions */}
+                        {showCaptions && (title || description) && (
+                          <figcaption
+                            className="text-sm text-gray-500 mt-2 text-center"
+                            {...ContentfulLivePreview.getProps({
+                              entryId: asset.sys.id,
+                              fieldId: description ? "description" : "title",
+                            })}
+                          >
+                            {description || title}
+                          </figcaption>
+                        )}
+                      </figure>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
           );
-        })}
-      </div>
-    </section>
-  );
-}
+        }
 
 
           // Handle fallback

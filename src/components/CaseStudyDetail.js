@@ -90,7 +90,9 @@ const CaseStudyDetail = () => {
     setLoading(true);
     setError(null);    
 
-    const client = selectClient();
+    // Determine if preview mode is enabled
+    const usePreview = window.location.search.includes('preview=true');
+    const client = selectClient(usePreview);
 
     client
       .getEntries({

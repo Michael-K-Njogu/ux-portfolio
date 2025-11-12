@@ -362,27 +362,59 @@ useEffect(() => {
 
         // Embedded Assets (images)
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
-        const { file, title, description } = node.data.target.fields;
-        const imageUrl = `https:${file.url}`;
+        const target = node?.data?.target;
+        const fields = target?.fields || {};
+        const fileField = fields?.file;
+        const title = fields?.title;
+        const description = fields?.description;
 
-        if (!imageUrl) return null;
+        // url can be undefined while an asset is still processing in Preview
+        const rawUrl = fileField?.url;
+        const imageUrl = rawUrl
+          ? (rawUrl.startsWith('//') ? `https:${rawUrl}` : rawUrl)
+          : null;
+
+        // Gracefully handle assets that are not fully processed yet
+        if (!imageUrl) {
+          return (
+            <figure>
+              <div
+                className="gallery-img w-full max-h-[500px] flex items-center justify-center bg-gray-100 text-gray-500"
+                {...ContentfulLivePreview.getProps({ entryId, fieldId })}
+              >
+                Asset processing… it will appear here once ready.
+              </div>
+              {(title || description) && (
+                <figcaption
+                  {...ContentfulLivePreview.getProps({ entryId, fieldId })}
+                  className="text-sm text-gray-500 mt-2 text-center"
+                >
+                  {description || title}
+                </figcaption>
+              )}
+            </figure>
+          );
+        }
 
         return (
-            <figure>
-              <Zoom>
-                <img
-                  {...ContentfulLivePreview.getProps({ entryId, fieldId })}
-                  src={imageUrl}
-                  alt={description || title}
-                  className="gallery-img w-full max-h-[500px] object-cover"
-                />
-              </Zoom>
-              {(title || description) && (
-                  <figcaption {...ContentfulLivePreview.getProps({ entryId, fieldId })} className="text-sm text-gray-500 mt-2 text-center">
-                  {description || title}
-                  </figcaption>
-              )}              
-            </figure>
+          <figure>
+            <Zoom>
+              <img
+                {...ContentfulLivePreview.getProps({ entryId, fieldId })}
+                src={imageUrl}
+                alt={description || title}
+                className="gallery-img w-full max-h-[500px] object-cover"
+              />
+            </Zoom>
+            {(title || description) && (
+              <figcaption
+                {...ContentfulLivePreview.getProps({ entryId, fieldId })}
+                className="text-sm text-gray-500 mt-2 text-center"
+              >
+                {description || title}
+              </figcaption>
+            )}
+          </figure>
         );
         },  
 

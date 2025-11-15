@@ -11,6 +11,15 @@ import Timeline from '../components/ui/Timeline';
 // Constants moved outside component to avoid recreation on each render
 const LEARNING_CARDS = [
   {
+    id: 'american-negotiation-institute',
+    title: 'Negotiation Professional Certificate',
+    source: 'American Negotiation Institute',
+    link: 'https://www.linkedin.com/learning/certificates/b99cae30fcd8bc407d87f5ec0aa893cc5081889ecfac1854fb3bda7176ba7575?u=2152425',
+    icon: './images/profile/american-negotiation-institute.png',
+    alt: 'American Negotiation Institute logo',
+    inverted: true
+  }, 
+  {
     id: 'iaap-member',
     title: 'IAAP - Professional Member',
     source: 'International Association of Accessibility Professionals',
@@ -42,15 +51,6 @@ const LEARNING_CARDS = [
     title: 'Data-Driven Design: Quantitative Research for UX',
     source: 'The Interaction Design Foundation (IxDF)',
     link: 'https://www.interaction-design.org/michael-kunyiha-njogu/certificate/course/b4021bd6-6d6f-4d77-9dbe-b8eedfa348ea',
-    icon: './images/profile/IxDF-logomark.png',
-    alt: 'IxDF logomark',
-    inverted: true
-  },
-  {
-    id: 'journey-mapping',
-    title: 'Journey Mapping',
-    source: 'The Interaction Design Foundation (IxDF)',
-    link: 'https://www.interaction-design.org/michael-kunyiha-njogu/certificate/course/613034c9-55a7-404d-9541-af4508c17538',
     icon: './images/profile/IxDF-logomark.png',
     alt: 'IxDF logomark',
     inverted: true

@@ -1,5 +1,5 @@
-const Timeline = () => {
-  const milestones = [
+const Timeline = ({ items }) => {
+  const defaultMilestones = [
     {
       id: 1,
       date: "Nov 2022 - Present",
@@ -27,8 +27,8 @@ const Timeline = () => {
     {
       id: 4,
       date: "Aug 2015 - Aug 2016",
-      title: "Frontend Web Developer (Consultant)",
-      description: "Developed and maintained websites for various clients, ensuring responsive design and optimal user experience.",
+      title: "WordPress Developer (Consultant), Masterbrands Ltd.",
+      description: "Developed and maintained WordPress websites for various clients, ensuring responsive design and optimal user experience.",
       type: "professional",
       importance: "important"
     },
@@ -41,6 +41,9 @@ const Timeline = () => {
       importance: "standard"
     }
   ];
+
+  // Use items prop if provided, otherwise use default milestones
+  const milestones = items && items.length > 0 ? items : defaultMilestones;
 
   const getImportanceStyles = (importance) => {
     switch (importance) {
@@ -76,14 +79,14 @@ const Timeline = () => {
             {/* Updated: Replaced icon with number */}
             <div className="timeline-icon order-1">
               <div
-                className={`h-8 w-8 rounded-full flex items-center justify-center font-bold ${getIconStyles(milestone.importance)}`}
+                className={`h-8 w-8 rounded-full flex items-center justify-center font-bold ${getIconStyles(milestone.importance || "standard")}`}
               >
-                {milestone.id}
+                {index + 1}
               </div>
             </div>
             <div
               className={`timeline-item order-1 ${getImportanceStyles(
-                milestone.importance
+                milestone.importance || "standard"
               )}`}
             >
                 <time>{milestone.date}</time>

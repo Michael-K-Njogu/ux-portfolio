@@ -89,7 +89,7 @@ const Timeline = ({ items }) => {
                 milestone.importance || "standard"
               )}`}
             >
-                <time>{milestone.date}</time>
+                <span className="card-date">{milestone.date}</span>
               <h3>{milestone.title}</h3>
               <p className="mb-0">{milestone.description}</p>
             </div>

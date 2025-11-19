@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import React from 'react';
 import App from './App'
-import About from './pages/About';
+import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import CaseStudies from './components/AllCaseStudies';
 import CaseStudyDetail from './components/CaseStudyDetail';
@@ -27,7 +27,7 @@ const router = createBrowserRouter(
       children: [
         { index: true, element: <CaseStudies /> },
         { path: 'case-studies/:slug', element: <CaseStudyDetail /> },
-        { path: 'about', element: <About /> },
+        { path: 'about', element: <Profile /> },
         { path: '*', element: <NotFound /> },
       ],
     },

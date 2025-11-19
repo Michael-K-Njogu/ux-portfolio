@@ -156,7 +156,7 @@ const About = () => {
             id: c.sys?.id,
             title: c.fields?.certTitle,
             institution: c.fields?.institution,
-            year: c.fields?.year,
+            dateAttained: c.fields?.dateAttained,
             credentialUrl: c.fields?.credentialUrl,
             inProgress: !!c.fields?.inProgress,
             iconUrl: toAssetUrl(c.fields?.institutionLogo),
@@ -434,10 +434,12 @@ const About = () => {
               const key = cert.id ?? cert.title;
               const title = cert.title ?? 'Certification';
               const source = cert.institution ?? cert.source ?? 'Independent study';
+              const dateAttained = cert.dateAttained ?? 'Date not specified';
               const link = cert.inProgress ? null : cert.credentialUrl ?? cert.link ?? null;
               const icon = cert.iconUrl ?? cert.icon ?? null;
               const alt = cert.alt ?? `${title} badge`;
               const inverted = cert.inverted ?? false;
+              const inProgress = cert.inProgress ?? false;
 
               return (
                 <motion.div key={key} variants={fadeInUp}>
@@ -446,6 +448,7 @@ const About = () => {
                       {icon ? <img src={icon} alt={alt} className={inverted ? "inverted" : ""} loading="lazy" /> : <div style={{width:64,height:64,background:'#f3f3f3'}} />}
                     </div>
                     <div className="learning-card-text">
+                      <span className="card-date">{!inProgress ? dateAttained : 'Ongoing'}</span>
                       <h5>{title}</h5>
                       <p>{source}</p>
                       {link ? (

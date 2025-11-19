@@ -309,7 +309,6 @@ blockquote p, blockquote p b {
   top: 0;
   left: 0;
 }
-
 @media (max-width: 1023.98px) {
 
     .hero {
@@ -858,17 +857,33 @@ figcaption {
 }
 
 .learning-cards {
-    column-count: 2;
-    gap: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.learning-cards > * {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 24px;
+    display: flex;
+    flex-basis: 48.99%;
 }
 
 .learning-card {
     border: 1px solid var(--colour-border);
     border-radius: 10px;
     display: flex;
+    flex-basis: 100%;
+    flex-grow: 1;
     font-size: 1rem;
-    margin-bottom: 24px;
+    margin-bottom: 0;
     padding: 20px;
+}
+
+.learning-cards > :has(.in-progress-spinner) {
+    opacity: 0.5 !important;
 }
 
 .learning-card-img {
@@ -894,6 +909,13 @@ figcaption {
     vertical-align: initial;
     height: auto;
     width: auto;
+}
+
+.in-progress-spinner {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.15em;
+    color: var(--colour-accent-primary);
 }
 
 @media (max-width: 1023.98px) {
@@ -925,10 +947,6 @@ figcaption {
 
     .timeline-item {
         width: 100%;
-    }
-
-    .learning-cards {
-        column-count: 1;
     }
 
     .learning-card {

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Avatar from '../images/michael-njogu.jpg';
 import AnimeAvatar from '../images/michael-anime.jpg';
 import Resume from '../docs/Michael_Njogu_CV.pdf';
-import { BoxArrowUpRight, ArrowUpRight, Download } from 'react-bootstrap-icons';
+import { BoxArrowUpRight, ArrowUpRight, Download, FilePdf } from 'react-bootstrap-icons';
 import Timeline from '../components/ui/Timeline';
 
 // Constants moved outside component to avoid recreation on each render
@@ -150,12 +150,12 @@ const About = () => {
 
                   <motion.div>
                     <Button
-                      href={Resume}
+                      href="mailto:mykekunyo@gmail.com"
                       variant="outline-secondary"
                       className="d-inline-flex align-items-center ms-0"
                     >
-                      Download My CV
-                      <span className="bootstrap-icon ms-1"><Download size={24} /></span>
+                      Request Resume
+                      <span className="bootstrap-icon ms-1"><FilePdf size={24} /></span>
                     </Button>
                   </motion.div>
                 </div>

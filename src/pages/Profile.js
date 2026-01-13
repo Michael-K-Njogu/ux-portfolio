@@ -5,8 +5,8 @@ import { Container, Row, Col, Button, Spinner } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import Avatar from '../images/michael-njogu.jpg';
 import AnimeAvatar from '../images/michael-anime.jpg';
-import Resume from '../docs/Michael_Njogu_CV.pdf';
-import { BoxArrowUpRight, ArrowUpRight, Download } from 'react-bootstrap-icons';
+//import Resume from '../docs/Michael_Njogu_CV.pdf';
+import { BoxArrowUpRight, ArrowUpRight } from 'react-bootstrap-icons';
 import Timeline from '../components/ui/Timeline';
 import { selectClient } from '../contentfulClient';
 
@@ -94,8 +94,8 @@ const About = () => {
   const heroSubtitle = aboutData?.fields?.aboutHeroSubtitle ?? "I learn by doing, exploring possibilities, experimenting with solutions, and adapting as I discover what works.";
   const heroLink1Label = aboutData?.fields?.aboutHeroPrimaryLinkLabel ?? 'View my work';
   const heroLink1Url = aboutData?.fields?.aboutHeroPrimaryLinkUrl ?? '/';
-  const heroLink2Label = aboutData?.fields?.uploadResumeTitle ?? 'Download my resume';
-  const heroLink2Url = toAssetUrl(aboutData?.fields?.uploadResume) ?? Resume;
+  //const heroLink2Label = aboutData?.fields?.uploadResumeTitle ?? 'Download my resume';
+  //const heroLink2Url = toAssetUrl(aboutData?.fields?.uploadResume) ?? Resume;
 
   const skills = aboutData?.fields?.coreSkills ?? FALLBACK_SKILLS;
   // tools: expect array of reference entries { fields: { name, purpose, icon } }
@@ -277,34 +277,6 @@ const About = () => {
                       >
                         {heroLink1Label}
                         <span className="bootstrap-icon ms-1"><ArrowUpRight size={24} /></span>
-                      </Button>
-                    )}
-                  </motion.div>
-
-                  <motion.div>
-                    {/* heroLink2: maybe a resume asset; fallback to static Resume file */}
-                    {heroLink2Url && !heroLink2Url.includes('http') && heroLink2Url.endsWith('.pdf') ? (
-                      // If it's a URL path that ends with pdf, use anchor
-                      <Button
-                        href={heroLink2Url}
-                        variant="outline-secondary"
-                        className="d-inline-flex align-items-center ms-0"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {heroLink2Label}
-                        <span className="bootstrap-icon ms-1"><Download size={24} /></span>
-                      </Button>
-                    ) : (
-                      <Button
-                        href={heroLink2Url || Resume}
-                        variant="outline-secondary"
-                        className="d-inline-flex align-items-center ms-0"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {heroLink2Label}
-                        <span className="bootstrap-icon ms-1"><Download size={24} /></span>
                       </Button>
                     )}
                   </motion.div>
